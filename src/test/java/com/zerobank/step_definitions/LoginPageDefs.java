@@ -1,10 +1,11 @@
-package com.zerobank.stepdefinitions;
+package com.zerobank.step_definitions;
 
 import com.zerobank.pages.HomePage;
 import com.zerobank.pages.LoginPage;
 import com.zerobank.utilities.ConfigurationReader;
 import com.zerobank.utilities.Driver;
 import io.cucumber.java.en.Given;
+import org.junit.Assert;
 
 public class LoginPageDefs {
 
@@ -17,6 +18,7 @@ public class LoginPageDefs {
         String username = ConfigurationReader.get("username");
         String password = ConfigurationReader.get("password");
         loginPage.login(username, password);
+        Assert.assertTrue(Driver.get().getCurrentUrl().contains("http://zero.webappsecurity.com/bank/account-summary"));
     }
 
 
